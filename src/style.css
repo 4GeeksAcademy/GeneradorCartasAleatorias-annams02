@@ -1,1 +1,18 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  background-color: greenyellow;
+}
+
+.card {
+  width: 238px;
+  height: 333px;
+}
+
+.head.card {
+}
+
+.body.card {
+}
+.foot.card {
+}
