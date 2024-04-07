@@ -2,23 +2,41 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
-    function palo= ['PICA', 'CORAZON', 'TREBOL', ''DIAMANTE];
-      let paloAleatorio = palo[Math.floor(Math.random() * palo.length)];
+function generarCarta() {
+  let numeroPalo = generarNumeroAleatorio(0, 3);
+  let numeroCarta = generarNumeroAleatorio(0, 12);
+  let palos = ["corazones", "picas", "treboles", "diamantes"];
+  let valorCarta = [
+    "A",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K"
+  ];
 
-    function numero= ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+  document.getElementById("parteSuperior").className = palos[numeroPalo];
+  document.getElementById("parteInferior").className = palos[numeroPalo];
+  document.getElementById("parteCentral").textContent = valorCarta[numeroCarta];
 
-    function generarExcusa() {
-       
-        let numeroAleatorio = numero[Math.floor(Math.random() * numero.length)];
-        let cartaCompleta= paloAleatorio + ' ' + numeroAleatorio + ' ' + paloAleatorio';
-        return cartaCompleta;
-    }
-    let elementoCartaCompleta = document.getElementById('cartaCompleta');
-    elementoCartaCompleta.innerHTML = generarCarta();
+  function generarNumeroAleatorio(rangoInferior, rangoSuperior) {
+    // +1 asegura que el rango superior sea inclusivo
+    return (
+      Math.floor(Math.random() * (rangoSuperior - rangoInferior + 1)) +
+      rangoInferior
+    );
+  }
 }
-  console.log();
+window.generarCarta = generarCarta;
+window.onload = function() {
+  generarCarta();
 };
